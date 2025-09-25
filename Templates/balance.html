@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/balance.css' %}">
+    </head>
+    <body>
+        <h1> YOUR ACCOUNT BALANCE </h1>
+        <h1>{{balance}}</h1>
+        <a href="{% url 'operationurl' user_id %}"><button>BACK TO HOME PAGE</button></a> 
+    </body>
+</html>

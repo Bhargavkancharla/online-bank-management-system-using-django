@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/withdraw.css' %}">
+    </head>
+    <body>
+        <form action="" method='POST'>
+            {% csrf_token %}
+            <h1>DEPOSIT THE AMOUNT IN YOUR ACCOUNT</h1>
+            <label for="" id='l1'>
+                Enter Amount Here:
+                <input type="text" name="amount" id="t1">
+            </label><br><br><br>
+            <input type="submit" name="WITHDRAW" id="t2"><br><br><br><br><br><br>
+            <h1>{{message}}</h1>
+            <br><br><br>
+        </form>
+        <a href="{% url 'operationurl' user_id %}"><button>BACK TO HOME PAGE</button></a>
+
+    </body>
+</html>

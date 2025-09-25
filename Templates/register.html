@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Account Registration</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <form action="" method="post",enctype='multipart/form-data'>
+        {% csrf_token %}
+        <h1>BANK ACCOUNT REGISTRATION FORM FOR NEW USERS</h1>
+        <div class="box">
+            <label>
+                First Name:
+                <input type="text" name="fname" id="t1" required>
+            </label><br><br>
+            
+            <label>
+                Last Name:
+                <input type="text" name="lname" id="t2" required>
+            </label><br><br>
+            
+            <label>
+                Phone Number:
+                <input type="text" name="phone" id="t3" required>
+            </label><br><br>
+            
+            <label>
+                Aadhaar Number:
+                <input type="text" name="addhar" id="t8" required>
+            </label><br><br>
+            
+            <label>
+                Email:
+                <input type="email" name="email" id="t4" required>
+            </label><br><br>
+            
+            <label>
+                Date of Birth:
+                <input type="date" name="dob" id="t5" required>
+            </label><br><br>
+            
+            <label>
+                Minimum Balance:
+                <input type="text" name="mbalance" id="t6" required>
+            </label><br><br>
+            
+            <label>
+                Photo:
+                <input type="file" name="pic" id="t7">
+            </label><br><br>
+            
+            <label>
+                Password:
+                <input type="password" name="pwd" id="t9" required>
+            </label><br><br>
+            
+            <label>
+                Confirm Password:
+                <input type="password" name="pwd1" id="t10" required>
+            </label><br><br>
+            
+            <p id="message" style="color:red;"></p>
+            
+            <input type="submit" value="Register">
+        </div>
+    </form>
+
+    <script>
+        let a = document.getElementById('t9');   // password
+        let b = document.getElementById('t10');  // confirm password
+        let msg = document.getElementById('message');
+        let form = document.querySelector("form");
+
+        // Check while typing
+        b.addEventListener('keyup', function() {
+            if (a.value !== b.value) {
+                msg.textContent = 'Passwords do not match';
+                msg.style.color = 'red';
+            } else {
+                msg.textContent = 'Passwords match';
+                msg.style.color = 'green';
+            }
+        });
+
+        // Stop form submission if not matching
+        form.addEventListener("submit", function(e) {
+            if (a.value !== b.value) {
+                e.preventDefault();
+                msg.textContent = "Passwords do not match!";
+                msg.style.color = "red";
+            }
+        });
+        let phone=document.getElementById('t3')
+        form.addEventListener('submit',function(t)){
+            if(str(phone).length()!==10){
+                msg.textContent='phone number must contain only 10 numbers';
+                msg.style.color='red';
+            }
+        }
+    </script>
+</body>
+</html>
